@@ -16,3 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/api/upload',[App\Http\Controllers\ZipCodeController::class,'upload']);
+
+Route::get('/api/zip-codes/{zipcode}',[App\Http\Controllers\ZipCodeController::class, 'show']);

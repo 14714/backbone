@@ -15,7 +15,10 @@ return new class extends Migration
     {
         Schema::create('federal_entities', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->integer('key')->nullable();
+            $table->string('name')->nullable();
+            $table->string('code')->nullable();
+            // $table->timestamps();
         });
     }
 

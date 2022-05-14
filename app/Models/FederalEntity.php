@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class FederalEntity extends Model
 {
     use HasFactory;
+
+    protected $guarded = [];
+    public $timestamps = false;
+    protected $hidden = ['id'];
+
 }

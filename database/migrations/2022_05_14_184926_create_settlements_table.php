@@ -15,7 +15,12 @@ return new class extends Migration
     {
         Schema::create('settlements', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->integer('key')->nullable();
+            $table->string('name')->nullable();
+            $table->string('zone_type')->nullable();
+            $table->integer('settlement_type_id')->nullable();
+            $table->integer('zip_code_id')->nullable();
+            // $table->timestamps();
         });
     }
 

@@ -15,7 +15,10 @@ return new class extends Migration
     {
         Schema::create('zip_codes', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('zip_code')->nullable();
+            $table->string('locality')->nullable();
+            $table->integer('municipality_id')->nullable();
+            $table->integer('federal_entity_id')->nullable();
         });
     }
 
