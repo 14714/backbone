@@ -12,6 +12,9 @@ class Settlement extends Model
     public $timestamps = false;
     public $with = ['settlementType'];
     protected $hidden = ['id','settlement_type_id','zip_code_id'];
+    protected $casts = [
+        'key' => 'integer',
+    ];
 
     public function zipCode()
     {

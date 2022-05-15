@@ -12,5 +12,9 @@ class FederalEntity extends Model
     protected $guarded = [];
     public $timestamps = false;
     protected $hidden = ['id'];
+    protected $casts = [
+        'key' => 'integer',
+        'name' => 'string',
+    ];
 
 }
