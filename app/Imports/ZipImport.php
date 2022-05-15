@@ -22,19 +22,19 @@ class ZipImport implements ToModel, WithHeadingRow, WithChunkReading
     public function model(array $row)
     {
         $municipality = Municipality::firstOrCreate([
-            'key' => $row['c_mnpio'],
+            'key' => intval($row['c_mnpio']),
             'name' => $row['d_mnpio'],
         ]);
 
         $federal = FederalEntity::firstOrCreate([
-            'key' => $row['c_estado'],
-            'name' => $row['d_estado'],
+            'key' => intval($row['c_estado']),
+            'name' => strtoupper($row['d_estado']),
             'code' => $row['c_cp']
         ]);
 
         $zipcode = ZipCode::firstOrCreate([
             'zip_code' => $row['d_codigo'],
-            'locality' => $row['d_ciudad'],
+            'locality' => strtoupper($row['d_ciudad']),
             'municipality_id' => $municipality->id,
             'federal_entity_id' => $federal->id,
         ]);
@@ -43,9 +43,9 @@ class ZipImport implements ToModel, WithHeadingRow, WithChunkReading
             'name' => $row['d_tipo_asenta'],
         ]);
         $settlement = Settlement::firstOrCreate([
-            'key' => $row['id_asenta_cpcons'],
-            'name' => $row['d_asenta'],
-            'zone_type' => $row['d_zona'],
+            'key' => intval($row['id_asenta_cpcons']),
+            'name' => strtoupper($row['d_asenta']),
+            'zone_type' => strtoupper($row['d_zona']),
             'settlement_type_id' => $settlementType->id,
             'zip_code_id' => $zipcode->id
         ]);
